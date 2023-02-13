@@ -12,8 +12,6 @@ const MainSearch = () => {
   const jobs = useSelector((state) => state.all.companies)
 
 
-
-
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
@@ -21,13 +19,10 @@ const MainSearch = () => {
     setQuery(e.target.value)
   }
 
-
   const handleSubmit = async (e) => {
     e.preventDefault()
     dispatch(getCompaniesActionAsync(query))
   }
-
-
 
 
   return (

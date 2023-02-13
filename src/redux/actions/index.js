@@ -38,3 +38,24 @@ export const getCompaniesActionAsync = (query) => {
         }
     }
 }
+
+
+
+export const getJobsActionAsync = (companyName) => {
+    return async (dispatch, getState) => {
+        try {
+            const response = await fetch('https://strive-benchmark.herokuapp.com/api/jobs?company=' + companyName)
+            if (response.ok) {
+                let fetchedCompanies = await response.json()
+                dispatch({
+                    type: GET_COMPANIES,
+                    playload: fetchedCompanies,
+                })
+            } else {
+                alert('Error fetching results')
+            }
+        } catch (error) {
+            console.log(error)
+        }
+    }
+}
