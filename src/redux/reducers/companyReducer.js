@@ -1,8 +1,9 @@
-import { GET_COMPANIES } from "../actions";
+import { GET_COMPANIES, GET_JOBS } from "../actions";
 
 
 const initialState = {
     companies: [],
+    jobs: []
 }
 
 
@@ -14,9 +15,17 @@ const companyReducer = (state = initialState, action) => {
                 companies: action.playload.data,
             }
 
+        case GET_JOBS:
+            return {
+                ...state,
+                jobs: action.playload.data
+            }
+
         default:
             return state
     }
 }
+
+
 
 export default companyReducer

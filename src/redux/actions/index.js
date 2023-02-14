@@ -2,6 +2,7 @@
 export const ADD_TO_FAVOURITE = 'ADD_TO_FAVOURITE'
 export const REMOVE_FROM_FAVOURITE = 'REMOVE_FROM_FAVOURITE'
 export const GET_COMPANIES = 'GET_COMPANIES'
+export const GET_JOBS = 'GET_JOBS'
 
 
 export const addToFavouriteAction = (companySelected) => {
@@ -48,7 +49,7 @@ export const getJobsActionAsync = (companyName) => {
             if (response.ok) {
                 let fetchedCompanies = await response.json()
                 dispatch({
-                    type: GET_COMPANIES,
+                    type: GET_JOBS,
                     playload: fetchedCompanies,
                 })
             } else {

@@ -8,7 +8,7 @@ import { getJobsActionAsync } from '../redux/actions'
 const CompanySearchResults = () => {
   const params = useParams()
   const dispatch = useDispatch()
-  const jobs = useSelector((state) => state.all.companies)
+  const jobs = useSelector((state) => state.all.jobs)
 
   useEffect(() => {
     dispatch(getJobsActionAsync(params.companyName))
