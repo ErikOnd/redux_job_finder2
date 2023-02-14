@@ -25,6 +25,13 @@ export const removeFromFavouriteAction = (i) => {
 
 export const getCompaniesActionAsync = (query) => {
     return async (dispatch, getState) => {
+
+        dispatch({
+            type: GET_JOBS_LOADING,
+            playload: true
+        })
+
+
         try {
             const response = await fetch('https://strive-benchmark.herokuapp.com/api/jobs?search=' + query + '&limit=20')
             if (response.ok) {

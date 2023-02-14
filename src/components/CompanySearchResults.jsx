@@ -4,11 +4,15 @@ import Job from './Job'
 import { useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { getJobsActionAsync } from '../redux/actions'
+import { Spinner, Alert } from 'react-bootstrap'
 
 const CompanySearchResults = () => {
   const params = useParams()
   const dispatch = useDispatch()
   const jobs = useSelector((state) => state.all.jobs)
+
+  const applicationSpinner = useSelector((state) => state.all.isLoading)
+  const errorMessage = useSelector((state) => state.all.isError)
 
   useEffect(() => {
     dispatch(getJobsActionAsync(params.companyName))
@@ -20,9 +24,14 @@ const CompanySearchResults = () => {
     <Container>
       <Row>
         <Col>
-          {jobs.map((jobData) => (
-            <Job key={jobData._id} data={jobData} />
-          ))}
+          {jobs.length === 0 ?
+            errorMessage && <Alert variant='danger' key='danger' className="mt-5">
+              An Error occured
+            </Alert> : jobs.map((jobData) => (
+              <Job key={jobData._id} data={jobData} />
+            ))}
+
+
         </Col>
       </Row>
     </Container>

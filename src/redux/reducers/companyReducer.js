@@ -4,7 +4,7 @@ import { GET_COMPANIES, GET_JOBS, GET_JOBS_LOADING, GET_JOBS_ERROR } from "../ac
 const initialState = {
     companies: [],
     jobs: [],
-    isLoading: true,
+    isLoading: false,
     isError: false,
 }
 
@@ -30,6 +30,7 @@ const companyReducer = (state = initialState, action) => {
             }
 
         case GET_JOBS_ERROR:
+            console.log(action.payload)
             return {
                 ...state,
                 isError: action.payload,
