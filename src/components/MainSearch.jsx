@@ -5,11 +5,10 @@ import Job from './Job'
 import { useSelector, useDispatch } from 'react-redux'
 import { getCompaniesActionAsync } from '../redux/actions'
 
+
 const MainSearch = () => {
   const [query, setQuery] = useState('')
-
   const jobs = useSelector((state) => state.all.companies)
-
 
   const navigate = useNavigate()
   const dispatch = useDispatch()

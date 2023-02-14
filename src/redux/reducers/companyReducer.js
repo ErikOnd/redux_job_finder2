@@ -1,9 +1,11 @@
-import { GET_COMPANIES, GET_JOBS } from "../actions";
+import { GET_COMPANIES, GET_JOBS, GET_JOBS_LOADING, GET_JOBS_ERROR } from "../actions";
 
 
 const initialState = {
     companies: [],
-    jobs: []
+    jobs: [],
+    isLoading: true,
+    isError: false,
 }
 
 
@@ -21,11 +23,22 @@ const companyReducer = (state = initialState, action) => {
                 jobs: action.playload.data
             }
 
+        case GET_JOBS_LOADING:
+            return {
+                ...state,
+                isLoading: action.payload,
+            }
+
+        case GET_JOBS_ERROR:
+            return {
+                ...state,
+                isError: action.payload,
+            }
+
         default:
             return state
     }
 }
-
 
 
 export default companyReducer
