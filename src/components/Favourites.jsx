@@ -31,7 +31,7 @@ const Favourites = () => {
           <ListGroup className='job-row'>
             {favourites.map((fav, i) => (
               <>
-                <div className='d-flex justify-content-center'>
+                <div className='d-flex justify-content-center mb-3'>
                   {applicationSpinner && <Spinner animation="border" variant="success" className="mt-5" />}
                   {errorMessage && <Alert variant='danger'>
                     An Error occured
