@@ -1,6 +1,6 @@
 import { Row, Col } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
-import { Star, StarFill } from 'react-bootstrap-icons'
+import { Heart, HeartFill } from 'react-bootstrap-icons'
 import { useSelector, useDispatch } from 'react-redux'
 import { addToFavouriteAction, removeFromFavouriteAction } from '../redux/actions'
 
@@ -15,35 +15,36 @@ const Job = ({ data }) => {
 
     <>
       <Row
-        className="mx-0 mt-3 p-3"
+        className="mx-0 mt-3 p-3 job-row"
         style={{ border: '1px solid #00000033', borderRadius: 4 }}
       >
+
+        <Col xs={5}>
+          <a href={data.url} target="_blank" rel="noreferrer">
+            {data.title}
+          </a>
+        </Col>
         <Col xs={3}>
           {isFav ? (
-            <StarFill
-              color="gold"
-              size={16}
-              className="mr-2 my-auto"
+            <HeartFill
+              color="red"
+              size={30}
+              className="mr-2 my-auto heart-icon"
               onClick={() =>
                 dispatch(removeFromFavouriteAction(data.company_name))
               }
             />
           ) : (
-            <Star
-              color="gold"
-              size={16}
-              className="mr-2 my-auto"
+            <Heart
+              color="red"
+              size={30}
+              className="mr-2 my-auto heart-icon"
               onClick={() =>
                 dispatch(addToFavouriteAction(data.company_name))
               }
             />
           )}
           <Link to={`/${data.company_name}`}>{data.company_name}</Link>
-        </Col>
-        <Col xs={9}>
-          <a href={data.url} target="_blank" rel="noreferrer">
-            {data.title}
-          </a>
         </Col>
       </Row>
 

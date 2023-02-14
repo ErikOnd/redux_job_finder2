@@ -6,7 +6,7 @@ import {
   ListGroupItem,
   Button,
 } from 'react-bootstrap'
-import { StarFill } from 'react-bootstrap-icons'
+import { HeartFill } from 'react-bootstrap-icons'
 import { useSelector, useDispatch } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
 import { removeFromFavouriteAction } from '../redux/actions'
@@ -28,7 +28,7 @@ const Favourites = () => {
           <Button onClick={() => navigate('/')}>Home</Button>
         </Col>
         <Col xs={10} className="mx-auto my-3">
-          <ListGroup>
+          <ListGroup className='job-row'>
             {favourites.map((fav, i) => (
               <>
                 <div className='d-flex justify-content-center'>
@@ -38,8 +38,10 @@ const Favourites = () => {
                   </Alert>}
                 </div>
                 <ListGroupItem key={i}>
-                  <StarFill
-                    className="mr-2"
+                  <HeartFill
+                    className="mr-2 heart-icon2"
+                    size={30}
+                    color="red"
                     onClick={() =>
                       dispatch(removeFromFavouriteAction(fav))
                     }
