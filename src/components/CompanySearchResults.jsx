@@ -25,14 +25,11 @@ const CompanySearchResults = () => {
       <Row>
         <Col>
           {applicationSpinner && <Spinner animation="border" variant="success" className="mt-5" />}
-          {jobs.length === 0 ?
-            errorMessage && <Alert variant='danger' key='danger' className="mt-5">
-              An Error occured
-            </Alert> : jobs.map((jobData) => (
-              <Job key={jobData._id} data={jobData} />
-            ))}
-
-
+          {errorMessage ? <Alert variant='danger' key='danger' className="mt-5">
+            An Error occured
+          </Alert> : jobs.map((jobData) => (
+            <Job key={jobData._id} data={jobData} />
+          ))}
         </Col>
       </Row>
     </Container>
